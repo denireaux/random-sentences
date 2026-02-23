@@ -41,16 +41,16 @@ public class Words {
 
     public static List<String> verbsList() {
         List<String> verbs = new ArrayList<>(Arrays.asList(
-            "accept","achieve","act","add","adjust","admire","allow","answer","appear","arrive",
-            "ask","attack","build","break","bring","buy","call","carry","catch","change",
-            "choose","clean","climb","close","collect","create","cut","decide","deliver","discover",
-            "drive","eat","enter","escape","explore","fight","find","finish","fix","follow",
-            "gain","give","grow","handle","help","hold","improve","jump","keep","know",
-            "lead","learn","leave","listen","look","make","move","notice","open","organize",
-            "paint","play","protect","push","reach","read","repair","run","save","search",
-            "see","send","share","shoot","show","solve","speak","start","stop","study",
-            "succeed","take","teach","tell","think","throw","travel","try","turn","understand",
-            "use","wait","walk","watch","win","work","write","exploit","navigate","deploy"
+            "accepted","achieved","acted","added","adjusted","admired","allowed","answered","appeared","arrived",
+            "asked","attacked","built","broke","brought","bought","called","carried","caught","changed",
+            "chose","cleaned","climbed","closed","collected","created","cut","decided","delivered","discovered",
+            "drove","ate","entered","escaped","explored","fought","found","finished","fixed","followed",
+            "gained","gave","grew","handled","helped","held","improved","jumped","kept","knew",
+            "led","learned","left","listened","looked","made","moved","noticed","opened","organized",
+            "painted","played","protected","pushed","reached","read","repaired","ran","saved","searched",
+            "saw","sent","shared","shot","showed","solved","spoke","started","stopped","studied",
+            "succeeded","took","taught","told","thought","threw","traveled","tried","turned","understood",
+            "used","waited","walked","watched","won","worked","wrote","exploited","navigated","deployed"
         ));
 
         return verbs;
