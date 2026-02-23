@@ -1,0 +1,7 @@
+services:
+  random-sentences:
+    container_name: random-sentence-services
+    build: .
+    env_file: .env 
+    ports:
+      - 8080:8080
