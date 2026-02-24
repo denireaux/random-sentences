@@ -3,6 +3,7 @@ package com.random.sentences;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.random.sentences.model.RandomSentence;
 import com.random.sentences.model.Words;
 import com.random.sentences.model.WordsResponse;
 
@@ -18,4 +19,11 @@ public class SentencesController {
                 Words.verbsList()
         );
     }
+
+    @GetMapping("/random/sentence")
+    public String getRandomSentence() {
+        String randomSentence = RandomSentence.generateRandomSentence();
+        return randomSentence;
+    }
+    
 }
