@@ -1,0 +1,14 @@
+services:
+  random-sentences:
+    container_name: random-sentence-service
+    build:
+      context: ./sentences 
+      dockerfile: Dockerfile
+    env_file: ./sentences/.env
+    ports:
+      - 8080:8080
+    networks:
+      - main
+
+networks:
+  main:

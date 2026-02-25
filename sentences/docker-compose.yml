@@ -1,6 +1,6 @@
 services:
   random-sentences:
-    container_name: random-sentence-services
+    container_name: random-sentence-service
     build: .
     env_file: .env 
     ports:
