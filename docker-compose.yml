@@ -10,5 +10,17 @@ services:
     networks:
       - main
 
+  activemq:
+    image: apache/activemq-classic:5.18.3
+    container_name: activemq
+    ports:
+      - "50061:61616"
+      - "50062:61613"
+      - "8161:8161"
+    env_file:
+      ./environment/.env
+    networks:
+      - main
+
 networks:
   main:
