@@ -58,6 +58,7 @@ services:
 
   frontend:
     container_name: library-frontend-web
+    env_file: .env
     build:
       context: ./library-frontend
       dockerfile: Dockerfile
