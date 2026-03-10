@@ -3,8 +3,8 @@ package com.random.sentences.service;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.jms.core.JmsTemplate;
+import org.springframework.stereotype.Service;
 
 import com.random.sentences.model.RandomSentence;
 
@@ -23,9 +23,9 @@ public class SentenceService {
         log.info(randomSentence);
 
         jmsTemplate.convertAndSend(sentenceTopic, randomSentence);
-        log.info("Sent to AMQ Topic: " + sentenceTopic + "\nSentence: " + randomSentence);
+        log.info(() -> "Sent to AMQ Topic: " + sentenceTopic + "\nSentence: " + randomSentence);
 
         return randomSentence;
     }
-    
+
 }
