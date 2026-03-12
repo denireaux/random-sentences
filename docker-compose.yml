@@ -23,6 +23,12 @@ services:
     env_file: .env
     networks:
       - main
+    healthcheck:
+      test: ["CMD", "java", "-version"] 
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   db:
     image: postgres:15-alpine
@@ -41,6 +47,20 @@ services:
       timeout: 5s
       retries: 5
       start_period: 30s
+
+  random-paragraphs:
+    container_name: random-paragraph-service 
+    build: 
+      context: ./paragraphs
+      dockerfile: Dockerfile
+    env_file: .env 
+    ports:
+      - 8090:8090
+    networks:
+      - main
+    depends_on:
+      activemq:
+        condition: service_healthy
 
   pgadmin:
     image: dpage/pgadmin4:latest
