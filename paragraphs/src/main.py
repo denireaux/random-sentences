@@ -1,4 +1,4 @@
-from AMQClient import AMQClient
+from paragraphs.src.models.AMQClient import AMQClient
 
 if __name__ == "__main__":
     client = AMQClient()

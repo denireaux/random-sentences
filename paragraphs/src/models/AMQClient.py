@@ -3,7 +3,7 @@ import sys
 import os
 import queue
 
-from PostgresClient import PostgresClient
+from paragraphs.src.models.PostgresClient import PostgresClient
 
 class AMQClient(stomp.ConnectionListener):
     def __init__(self):
