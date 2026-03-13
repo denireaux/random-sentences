@@ -90,6 +90,20 @@ services:
     networks:
       - main
 
+  api:
+    container_name: api
+    env_file: .env
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - 8095:8095
+    networks:
+      - main
+    depends_on:
+      db:
+        condition: service_healthy
+
 networks:
   main:
     driver: bridge
