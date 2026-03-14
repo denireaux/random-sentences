@@ -1,0 +1,7 @@
+services:
+  random-paragraphs:
+    container_name: random-paragraph-service 
+    build: .
+    env_file: ../.env 
+    ports:
+      - 8090:8090
