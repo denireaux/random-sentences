@@ -97,3 +97,11 @@ class PostgresClient():
 
         return True
         
+    def _arrange_paragraph(self, rows):
+        print(f"Rows received by PostgresClient._arrange_paragraph:\n{rows}")
+        
+        sentences = []
+        for sentence_text, _, _ in rows:
+            sentences.append(sentence_text)
+        
+        return " ".join(sentences)

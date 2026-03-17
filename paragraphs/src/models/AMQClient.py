@@ -84,13 +84,14 @@ class AMQClient(stomp.ConnectionListener):
 
     def worker(self):
         while self.running:
-
             try:
                 message = self.msg_queue.get(timeout=1)
 
                 self.pg_client.persist_amq_message(message)
 
                 rows = self.pg_client.pop_last_five_sentences()
+                paragraph = self.pg_client._arrange_paragraph(rows)
+                print(f"Resulting paragraph: {paragraph}") if paragraph else print("Waiting for enough sentences to parse into paragraph...")
 
                 if rows:
                     print("\nCollected 5 sentences:")
