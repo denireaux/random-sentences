@@ -31,7 +31,7 @@ public class SentencesController {
         return randomSentence;
     }
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 1000)
     public void scheduledSentenceGeneration() {
         sentenceService.generateAndProcess();
     }
