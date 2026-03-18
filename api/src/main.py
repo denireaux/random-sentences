@@ -18,7 +18,7 @@ app.add_middleware(
 def get_last_sentence():
     conn = psycopg2.connect(
         host=os.getenv("POSTGRES_HOST"),
-        dbname=os.getenv("POSTGRES_DB"),
+        dbname=os.getenv("POSTGRES_SENTENCE_DB"),
         user=os.getenv("POSTGRES_USER"),
         password=os.getenv("POSTGRES_PASSWORD")
     )

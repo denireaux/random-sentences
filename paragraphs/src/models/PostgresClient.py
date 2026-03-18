@@ -5,7 +5,7 @@ class PostgresClient():
     def __init__(self):
         self.host     = os.getenv("POSTGRES_HOST")
         self.port     = os.getenv("POSTGRES_PORT")
-        self.dbname   = os.getenv("POSTGRES_DB")
+        self.dbname   = os.getenv("POSTGRES_SENTENCE_DB")
         self.user     = os.getenv("POSTGRES_USER")
         self.password = os.getenv("POSTGRES_PASSWORD")
         
@@ -97,11 +97,41 @@ class PostgresClient():
 
         return True
         
-    def _arrange_paragraph(self, rows):
-        print(f"Rows received by PostgresClient._arrange_paragraph:\n{rows}")
+    def _arrange_paragraph(self, sentence_collection_object):
+        print(f"Rows received by PostgresClient._arrange_paragraph:\n{sentence_collection_object}")
         
         sentences = []
-        for sentence_text, _, _ in rows:
+        for sentence_text, _, _ in sentence_collection_object:
             sentences.append(sentence_text)
         
         return " ".join(sentences)
+    
+    def _persist_paragraph(self, paragraph_object):
+        
+        conn = None
+        try:
+            conn = psycopg2.connect(
+                host=self.host,
+                port=self.port,
+                dbname=self.dbname,
+                user=self.user,
+                password=self.password
+            )
+            cursor = conn.cursor()
+            
+            insert_query = """
+            INSERT INTO generated_paragraphs (PARAGRAPH_TEXT, CREATED_AT)
+            VALUES (%s, NOW())
+            """
+            
+            cursor.execute(insert_query, (paragraph_object,))
+            conn.commit()
+            cursor.close()
+            
+            print(f"Persisted successfully: {paragraph_object}")
+            
+        except psycopg2.Error as e:
+            print(f"Postgres Error: {e}")
+        finally:
+            if conn:
+                conn.close()

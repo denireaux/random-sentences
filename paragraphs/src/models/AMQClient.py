@@ -90,8 +90,9 @@ class AMQClient(stomp.ConnectionListener):
                 self.pg_client.persist_amq_message(message)
 
                 rows = self.pg_client.pop_last_five_sentences()
-                paragraph = self.pg_client._arrange_paragraph(rows) # NOTE: This is as far as I got with the paragraphs
-                print(f"Resulting paragraph: {paragraph}") if paragraph else print("Waiting for enough sentences to parse into paragraph...")
+                paragraph = self.pg_client._arrange_paragraph(rows)
+                
+                self.pg_client._persist_paragraph(paragraph) if paragraph else print("Waiting for paragraph persistence...")
 
                 if rows:
                     print("\nCollected 5 sentences:")
